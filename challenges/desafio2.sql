@@ -1,1 +1,1 @@
-SELECT COUNT(musicas_id) AS cancoes, COUNT(DISTINCT artista) AS artistas, COUNT(DISTINCT album_id) AS albuns FROM musicas LIMIT 100;
+SELECT COUNT(musica_id) AS cancoes, COUNT(DISTINCT artist_id) AS artistas, COUNT(DISTINCT album_id) AS albuns FROM musicas;

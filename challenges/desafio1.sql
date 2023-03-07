@@ -59,24 +59,25 @@ CREATE TABLE musicas (
     musica_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     album_id INT NOT NULL,
     musica VARCHAR(100) NOT NULL,
-    duracao_segundos INT NOT NULL,
-    data_lancamento DATE NOT NULL,
+    duracao INT NOT NULL,
+    lancamento DATE NOT NULL,
+    artist_id INT NOT NULL,
+    FOREIGN KEY (artist_id) REFERENCES artistas(artista_id),
     FOREIGN KEY (album_id) REFERENCES albums(album_id)
 ) ENGINE = InnoDB;
 
-INSERT INTO musicas (album_id, musica, duracao_segundos, data_lancamento)
+INSERT INTO musicas (album_id, musica, artist_id, duracao, lancamento)
 VALUES
-  (2, 'BREAK MY SOUL', 279, '2022-01-01'),
-  (2, "VIRGO'S GROOVE", 369, '2022-01-01'),
-  (2, 'ALIEN SUPERSTAR', 116, '2022-01-01'),
-  (7, "Don't Stop Me Now", 203, '1978-01-01'),
-  (8, 'Under Pressure', 152, '1982-01-01'),
-  (4, 'Como Nossos Pais', 105, '1998-01-01'),
-  (5, 'O Medo de Amar é o Medo de Ser Livre', 207, '2001-01-01'),
-  (1, 'Samba em Paris', 267, '2003-01-01'),
-  (3, "The Bard's Song", 244, '2007-01-01'),
-  (6, 'Feeling Good', 100, '2012-01-01');
-
+  (2, 'BREAK MY SOUL', 2, 279, '2022-01-01'),
+  (2, "VIRGO'S GROOVE", 2, 369, '2022-01-01'),
+  (2, 'ALIEN SUPERSTAR', 2, 116, '2022-01-01'),
+  (7, "Don't Stop Me Now", 6, 203, '1978-01-01'),
+  (8, 'Under Pressure', 6, 152, '1982-01-01'),
+  (4, 'Como Nossos Pais', 4, 105, '1998-01-01'),
+  (5, 'O Medo de Amar é o Medo de Ser Livre', 4, 207, '2001-01-01'),
+  (1, 'Samba em Paris', 1, 267, '2003-01-01'),
+  (3, "The Bard's Song", 3, 244, '2007-01-01'),
+  (6, 'Feeling Good', 5, 100, '2012-01-01');
 
 CREATE TABLE planos(
   plano_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
