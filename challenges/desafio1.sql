@@ -8,7 +8,7 @@ CREATE TABLE artistas(
   artista VARCHAR(100) NOT NULL PRIMARY KEY
 ) engine = InnoDB;
 
-INSERT INTO artistas (artista)
+INSERT INTO artistas(artista)
 VALUES
   ('Baco Exu do Blues'),
   ('Beyoncé'),
@@ -24,7 +24,7 @@ CREATE TABLE albums(
   FOREIGN KEY (artista) REFERENCES artistas(artista)
 ) engine = InnoDB;
 
-INSERT INTO albums (album, artista)
+INSERT INTO albums(album, artista)
 VALUES
   ('QVVJFA', 'Baco Exu do Blues'),
   ('Renaissance', 'Beyoncé'),
@@ -39,14 +39,14 @@ CREATE TABLE musicas(
   musicas_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   album_id INT NOT NULL,
   artista VARCHAR(100) NOT NULL,
-  musicas VARCHAR(800) NOT NULL,
+  musica VARCHAR(200) NOT NULL,
   duracao_segundos INT NOT NULL,
   ano_lancamento INT NOT NULL,
   FOREIGN KEY (artista) REFERENCES artistas(artista),
   FOREIGN KEY (album_id) REFERENCES albums(album_id)
 ) engine = InnoDB;
 
-INSERT INTO musicas (album_id, artista, musica, duracao_segundos, ano_lancamento)
+INSERT INTO musicas(album_id, artista, musica, duracao_segundos, ano_lancamento)
 VALUES
   (2, 'Beyoncé', "BREAK MY SOUL", 279, 2022),
   (2, 'Beyoncé', "VIRGO'S GROOVE", 369, 2022),
@@ -59,19 +59,19 @@ VALUES
   (3, 'Blind Guardian', "The Bard's Song", 244, 2007),
   (6, 'Nina Simone', "Feeling Good", 100, 2012);
 
-CREATE TABLE planos (
+CREATE TABLE planos(
   plano VARCHAR(100) NOT NULL PRIMARY KEY,
   valor_plano decimal(4,2) NOT NULL
 ) engine = InnoDB;
 
-INSERT INTO planos (plano, valor_plano)
+INSERT INTO planos(plano, valor_plano)
 VALUES
   ('gratuito', 0.00),
   ('universitário', 5.99),
   ('pessoal', 6.99),
   ('familiar', 7.99);
 
-CREATE TABLE usuarios (
+CREATE TABLE usuarios(
   usuario_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(100) NOT NULL,
   idade INT NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE usuarios (
   FOREIGN KEY (plano) REFERENCES planos(plano)
 ) engine = InnoDB;
 
-INSERT INTO usuarios (nome, idade, plano, data_assinatura)
+INSERT INTO usuarios(nome, idade, plano, data_assinatura)
 VALUES
   ('Barbara Liskov', 82, 'gratuito', '2019-10-20'),
   ('Robert Cecil Martin', 58, 'gratuito', '2017-01-06'),
@@ -93,31 +93,31 @@ VALUES
   ('Judith Butler', 45, 'pessoal', '2020-05-13'),
   ('Jorge Amado', 58, 'pessoal', '2017-02-17');
 
-CREATE TABLE seguindo_artistas (
-  usuario_id INT NOT NULL,
-  artista VARCHAR(100),
-  FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
-  FOREIGN KEY (artista) REFERENCES artistas(artista)
-) engine = InnoDB;
+CREATE TABLE seguindo_artistas 
+(
+    pessoa_usuaria_id	INT NOT NULL,
+    nome_pessoa_usuaria	VARCHAR(512) NOT NULL,
+    artista	VARCHAR(512) NOT NULL
+);
 
-INSERT INTO seguindo_artistas (usuario_id, artista)
-VALUES
-  (1, 'Beyoncé'),
-  (1, 'Queen'),
-  (1, 'Elis Regina'),
-  (2, 'Beyoncé'),
-  (2, 'Elis Regina'),
-  (3, 'Queen'),
-  (4, 'Baco Exu do Blues'),
-  (5, 'Blind Guardian'),
-  (5, 'Nina Simone'),
-  (6, 'Nina Simone'),
-  (6, 'Beyoncé'),
-  (7, 'Nina Simone'),
-  (9, 'Elis Regina'),
-  (10, 'Queen');
+INSERT INTO seguindo_artistas (pessoa_usuaria_id, nome_pessoa_usuaria, artista) VALUES
+	('1', 'Barbara Liskov', 'Beyoncé'),
+	('1', 'Barbara Liskov', 'Queen'),
+	('1', 'Barbara Liskov', 'Elis Regina'),
+	('2', 'Robert Cecil Martin', 'Beyoncé'),
+	('2', 'Robert Cecil Martin', 'Elis Regina'),
+	('3', 'Ada Lovelace', 'Queen'),
+	('4', 'Martin Fowler', 'Baco Exu do Blues'),
+	('5', 'Sandi Metz', 'Blind Guardian'),
+	('5', 'Sandi Metz', 'Nina Simone'),
+	('6', 'Paulo Freire', 'Nina Simone'),
+	('6', 'Paulo Freire', 'Beyoncé'),
+	('7', 'Bell Hooks', 'Nina Simone'),
+	('8', 'Christopher Alexander', ''),
+	('9', 'Judith Butler', 'Elis Regina'),
+	('10', 'Jorge Amado', 'Queen');
 
-CREATE TABLE historico (
+CREATE TABLE historico(
   historico_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   usuario_id INT NOT NULL,
   historico_repro VARCHAR(100),
@@ -125,7 +125,7 @@ CREATE TABLE historico (
   FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
 ) engine = InnoDB;
 
-INSERT INTO historico (usuario_id, historico_repro, data_repro)
+INSERT INTO historico(usuario_id, historico_repro, data_repro)
 VALUES
   (1, 'Samba em Paris', '2022-02-28 10:45:55'),
   (1, "VIRGO'S GROOVE", '2020-05-02 05:30:35'),
