@@ -21,21 +21,22 @@ VALUES
 CREATE TABLE pessoa_usuaria (
   usuario_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(100) NOT NULL,
-  idade INT NOT NULL
+  idade INT NOT NULL,
+  pessoa_status VARCHAR(10) NOT NULL
 ) engine = InnoDB;
 
-INSERT INTO pessoa_usuaria(nome, idade)
+INSERT INTO pessoa_usuaria(nome, idade, pessoa_status)
 VALUES
-  ('Barbara Liskov', 82),
-  ('Robert Cecil Martin', 58),
-  ('Ada Lovelace', 37),
-  ('Martin Fowler', 46),
-  ('Sandi Metz', 58),
-  ('Paulo Freire', 19),
-  ('Bell Hooks', 26),
-  ('Christopher Alexander', 85),
-  ('Judith Butler', 45),
-  ('Jorge Amado', 58);
+  ('Barbara Liskov', 82, 'Ativa'),
+  ('Robert Cecil Martin', 58, 'Ativa'),
+  ('Ada Lovelace', 37, 'Inativa'),
+  ('Martin Fowler', 46, 'Ativa'),
+  ('Sandi Metz', 58, 'Ativa'),
+  ('Paulo Freire', 19, 'Inativa'),
+  ('Bell Hooks', 26, 'Inativa'),
+  ('Christopher Alexander', 85, 'Inativa'),
+  ('Judith Butler', 45, 'Ativa'),
+  ('Jorge Amado', 58, 'Inativa');
 
 CREATE TABLE albums(
   album_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
