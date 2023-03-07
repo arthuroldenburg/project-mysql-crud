@@ -46,7 +46,7 @@ CREATE TABLE albums(
 
 INSERT INTO albums(album, artista_id)
 VALUES
-  ('QVVJFA', 1),
+  ('QVVJFA?', 1),
   ('Renaissance', 2),
   ('Somewhere Far Beyond', 3),
   ('Falso Brilhante', 4),
