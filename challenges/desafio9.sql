@@ -1,0 +1,1 @@
+SELECT COUNT(musica) AS musicas_no_historico FROM historico WHERE usuario_id LIKE 1;
